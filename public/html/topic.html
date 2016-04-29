@@ -1,0 +1,72 @@
+<!--
+//Copyright {2016} {NIIT Limited, Wipro Limited}
+//
+//   Licensed under the Apache License, Version 2.0 (the "License");
+//   you may not use this file except in compliance with the License.
+//   You may obtain a copy of the License at
+//
+//       http://www.apache.org/licenses/LICENSE-2.0
+//
+//   Unless required by applicable law or agreed to in writing, software
+//   distributed under the License is distributed on an "AS IS" BASIS,
+//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//   See the License for the specific language governing permissions and
+//   limitations under the License.
+//
+//   Name of Developers  Raghav Goel, Kshitij Jain, Lakshay Bansal, Ayush Jain, Saurabh Gupta, Akshay Meher
+//
+-->
+<div class="container fullHeight">
+  <div class="content">
+      <div class="row topic-header">
+         <div class="col-xs-4 topic-icon">
+           <img ng-src="{{topic.topicIcon}}"  class="img-responsive" alt="">
+           <div class="follow">
+             <h3>
+             <span title="Unfollow this topic" class="glyphicon glyphicon-heart" ng-show="userTopicFollowState" ng-click="followUnfollow()" style="color: red;"></span>
+             <span title="Follow this topic" class="glyphicon glyphicon-heart-empty" ng-hide="userTopicFollowState" ng-click="followUnfollow()"></span>
+             <span>{{topicFollowers}}</span>
+             </h3>
+             <label class="btn btn-info" id="levelnum">Level:{{topic.userStats.topicLevel}}</label>
+            </div>
+         </div>
+            <h1>{{topic.topicName}}<br><small>{{topic.topicDescription}}</small></h1>
+            <label class="btn btn-success pull-right" id="exp">Points:{{topic.userStats.points}} </label>
+      </div><!--end topic-icon-->
+      <div class="row">
+         <div class="col-xs-4  col-md-offset-2 col-lg-offset-2">
+            <div class="pie-chart ">
+               <pie-chart data="topic.userStats.progressData" options="topic.userStats.progressOptions"></pie-chart>
+            </div>
+         </div>
+         <div class="col-xs-4  col-md-offset-2 col-lg-offset-1">
+            <div class="pie-chart">
+               <pie-chart data="topic.userStats.graphOptions" options="topic.userStats.dataOptions"></pie-chart>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-xs-4" id="games">
+            <span class="glyphicon glyphicon-tower glyph"></span>
+            <p>Games</br>{{topic.userStats.topicTotalGames}}
+            </p>
+         </div>
+         <div class="col-xs-4" id="win">
+            <span class="glyphicon glyphicon-user glyph"></span>
+            <p>AverageRank</br>{{topic.userStats.topicAverageRank}}
+            </p>
+         </div>
+         <div class="col-xs-4" id="winpercentage">
+            <span class="glyphicon glyphicon-signal glyph"></span>
+            <p>AverageScore<br>{{topic.userStats.topicAverageScore}}
+            </p>
+         </div>
+       </div><!--end row-->
+      <hr>
+      <div id="foot" class="row">
+			<div  class="col-xs-12 play-button-bar">
+					<button id="startGameButton" class="btn btn-success" ng-click="playGame(topicId)">Play Now</button>
+			</div>
+		</div><!--end of foot-->
+  </div><!--end content-->
+</div><!--end container-->
